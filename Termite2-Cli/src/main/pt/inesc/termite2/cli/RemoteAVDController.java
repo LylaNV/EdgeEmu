@@ -34,17 +34,17 @@ public class RemoteAVDController {
         for (String[] address: mNetworksFullIps){
             String ip = address[0];
             int port = Integer.parseInt(address[1]);
-            System.out.println("Establishing socket connections to Termite2 Server on '" +ip+ ":" +port+ "'.");
+            System.out.println("Establishing socket connections to EdgeEmu Server on '" +ip+ ":" +port+ "'.");
             try {
                 Socket socket = new Socket();
                 socket.connect(new InetSocketAddress(ip, port), 10000);
                 mSocketConnections.put(ip, new ControllerConnection(socket));
             } catch (IOException e) {
                 //e.printStackTrace();
-                throw new RemoteAVDControllerException("Error: Termite2 Server on '" +ip+ ":" +port+ "' not reachable, socket connection not created.");
+                throw new RemoteAVDControllerException("Error: EdgeEmu Server on '" +ip+ ":" +port+ "' not reachable, socket connection not created.");
             }
         }
-        System.out.println("Connection/s to Termite2 Server/s established without errors.");
+        System.out.println("Connection/s to EdgeEmu Server/s established without errors.");
     }
 
     public void closeConnections(){
@@ -83,7 +83,7 @@ public class RemoteAVDController {
 
         ArrayList<String> result = sendMessageToTermiteServer(ip, request);
         if(result == null ){
-            return "Error: Failed to send command request to termite2 server " + ip + ".";
+            return "Error: Failed to send command request to EdgeEmu server " + ip + ".";
         }
         return result.toString();
     }
@@ -95,7 +95,7 @@ public class RemoteAVDController {
 
         ArrayList<String> result = sendMessageToTermiteServer(ip, request);
         if(result == null ){
-            return "Error: Failed to send command request to termite2 server " + ip + ".";
+            return "Error: Failed to send command request to EdgeEmu server " + ip + ".";
         }
         if(arrayListToString(result).contains("Error")){
             return arrayListToString(result);
@@ -115,7 +115,7 @@ public class RemoteAVDController {
 
         ArrayList<String> result = sendMessageToTermiteServer(ip, request);
         if(result == null ){
-            return "Error: Failed to send command request to termite2 server " + ip + ".";
+            return "Error: Failed to send command request to EdgeEmu server " + ip + ".";
         }
         return result.toString();
 
@@ -133,7 +133,7 @@ public class RemoteAVDController {
 
         ArrayList<String> result = sendMessageToTermiteServer(ip, request);
         if(result == null ){
-            return "Error: Failed to send startemus command request to termite2 server.";
+            return "Error: Failed to send startemus command request to EdgeEmu server.";
         }
         else if(arrayListToString(result).contains("Error")){
             return arrayListToString(result);
@@ -155,7 +155,7 @@ public class RemoteAVDController {
 
         ArrayList<String> result = sendMessageToTermiteServer(ip, request);
         if(result == null ){
-            return "Error: Failed to send command request to termite2 server " + ip + ".";
+            return "Error: Failed to send command request to EdgeEmu server " + ip + ".";
         }
         else if(arrayListToString(result).contains("Error")){
             return arrayListToString(result);
@@ -174,7 +174,7 @@ public class RemoteAVDController {
 
         ArrayList<String> result = sendMessageToTermiteServer(ip, request);
         if(result == null ){
-            return "Error: Failed to send command request to termite2 server " + ip + ".";
+            return "Error: Failed to send command request to EdgeEmu server " + ip + ".";
         }
         else if(arrayListToString(result).contains("Error")){
             return arrayListToString(result);
@@ -192,7 +192,7 @@ public class RemoteAVDController {
 
         ArrayList<String> result = sendMessageToTermiteServer(ip, request);
         if(result == null ){
-            return "Error: Failed to send command request to termite2 server " + ip + ".";
+            return "Error: Failed to send command request to EdgeEmu server " + ip + ".";
         }
 
         String sresult = "";
@@ -213,7 +213,7 @@ public class RemoteAVDController {
 
         ArrayList<String> result = sendMessageToTermiteServer(ip, request);
         if(result == null ){
-            return "Error: Failed to send command request to termite2 server " + ip + ".";
+            return "Error: Failed to send command request to EdgeEmu server " + ip + ".";
         }
 
         String sresult = "";
@@ -237,7 +237,7 @@ public class RemoteAVDController {
 
         ArrayList<String> result = sendMessageToTermiteServer(ip, request);
         if(result == null ){
-            return "Error: Failed to send command request to termite2 server " + ip + ".";
+            return "Error: Failed to send command request to EdgeEmu server " + ip + ".";
         }
 
         String sresult = "";
@@ -281,7 +281,7 @@ public class RemoteAVDController {
         try {
             mSocketConnections.get(ip).getOut().writeObject(cmdMsg);
             mSocketConnections.get(ip).getOut().flush();
-            System.out.println("Command " + cmdMsg.toString() + " sent to termite2 server \"" + ip + "\" ...");
+            System.out.println("Command " + cmdMsg.toString() + " sent to EdgeEmu server \"" + ip + "\" ...");
 
             Object obj = mSocketConnections.get(ip).getIn().readObject();
             return (ArrayList<String>) obj;

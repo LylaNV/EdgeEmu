@@ -640,12 +640,12 @@ function setUrlPath(){
         pageUrl = splitURL[0];
 
         setMarkerIconsUrls(pageUrl);
-    } else if (fullUrl.indexOf('/EdgeEmuUI_OpenStreetMap/Webpage/') !== -1) {
-        const midURL = fullUrl.split('EdgeEmuUI_OpenStreetMap/WebPage/');
+    } else if (fullUrl.indexOf('/Termite2UI_OpenStreetMap/Webpage/') !== -1) {
+        const midURL = fullUrl.split('Termite2UI_OpenStreetMap/WebPage/');
         pageUrl = midURL[0];
 
         setMarkerIconsUrls(pageUrl);
-    } else if (fullUrl.indexOf('/EdgeEmuUI_OpenStreetMap/') !== -1) {
+    } else if (fullUrl.indexOf('/Termite2UI_OpenStreetMap/') !== -1) {
 
         setMarkerIconsUrls(pageUrl);
     }
@@ -2780,7 +2780,7 @@ function openEmulatorsView() {
 }
 
 // eslint-disable-next-line no-unused-vars
-// Asks EdgeEmu server for list of emulators and call the refreshEmulators function to refresh the emulators list.
+// Asks Termite server for list of emulators and call the refreshEmulators function to refresh the emulators list.
 function refreshEmusBtn() {
     const emulatorsDataArray = sendPostRequest('refresh'); // emulatorsDataArray -> response text
 
@@ -2817,7 +2817,7 @@ function setEmulatorsDataView() {
         // create title div element
         const networkListTitleDiv = document.createElement('DIV');
         networkListTitleDiv.classList.add('networkListTitle');
-        networkListTitleDiv.innerHTML = `EdgeEmuServer - ${key}`;
+        networkListTitleDiv.innerHTML = `Termite2Server - ${key}`;
         // create button element
         const startEmuBtn = document.createElement('BUTTON');
         startEmuBtn.innerHTML = 'Start emulator';
@@ -2924,7 +2924,7 @@ function startEmulator(network) {
 }
 
 // eslint-disable-next-line no-unused-vars
-//This function stops all emulators or one determined emulator by sending an HTTP request to EdgeEmu server.
+//This function stops all emulators or one determined emulator by sending an HTTP request to Termite server.
 function stopEmulator() {
     let commandMsg = '';
     const stopEmu = document.getElementById('stopEmuOptions').value;
@@ -2960,7 +2960,7 @@ function getInstalled() {
 // ///////////////////////////////// -- HTTP Operations -- /////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////////////////////////
 
-// This function sends an HTTP post request to the EdgeEmu server.
+// This function sends an HTTP post request to the Termite2 server.
 // Input = command, Output: response text
 function sendPostRequest(msg) {
     const xhttp = new XMLHttpRequest();
@@ -2970,7 +2970,7 @@ function sendPostRequest(msg) {
     const response = xhttp.responseText;
 
     if (response == null || response.includes('Status 500') || response.size === 0) { // I cant catch the 404 error message so i read it insted
-        alert('Unable to contact EdgeEmu Client.');
+        alert('Unable to contact Termite Client.');
         return null;
     }
     if (response.includes('Error')) {
@@ -3029,7 +3029,7 @@ function formatCommit() {
     if (commitString.includes('move') || commitString.includes('creategroup')
         || commitString.includes('deletegroup') || commitString.includes('joingroup')
         || commitString.includes('leavegroup')) {
-        return `${commitString}commit`; // in case there is network changes relevant to the emulators, the commit command to be sent and processed on EdgeEmu-cli
+        return `${commitString}commit`; // in case there is network changes relevant to the emulators, the commit command to be sent and processed on termite-cli
     }
     return commitString.slice(0, -1); // there is no relevant command to be committed for the emulators. we remove the last ; to avoid errors
 }
@@ -3038,7 +3038,7 @@ function start(){
     setUrlPath();
     setOpenRoutServiceApiKey();
 
-    // first start connect msg to EdgeEmu-cli
+    // first start connect msg to termite-cli
     const xHttp = new XMLHttpRequest();
     xHttp.open('GET', 'CommunicationServlet', false); // false for synchronous request
     xHttp.send(null);
@@ -3046,13 +3046,13 @@ function start(){
     const { length } = response;
 
     if (response.charAt(0) === '<') { // I cant catch the 404 error message so i read it insted
-        alert('Unable to contact EdgeEmu Client.');
+        alert('Unable to contact Termite Client.');
         return;
     }
 
-    // this is used to verify error connection with EdgeEmu cli
+    // this is used to verify error connection with termite cli
     if (response === 'ERROR') {
-        alert('Unable to contact EdgeEmu Client.');
+        alert('Unable to contact Termite Client.');
         return;
     }
 }
@@ -3142,7 +3142,7 @@ function refreshBinds(newEmulators) {
 /*
  * IMPORTANT!
  * This is used to tell the Apache server that the page was closed or refreshed in order to then
- * warn EdgeEmu client that the network should be cleared.
+ * warn Termite client that the network should be cleared.
  * */
 // eslint-disable-next-line func-names
 window.onunload = function () {

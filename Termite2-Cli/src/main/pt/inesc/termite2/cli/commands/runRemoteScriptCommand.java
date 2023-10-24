@@ -43,6 +43,6 @@ public class runRemoteScriptCommand extends Command {
 
     @Override
     public String getExplanation() {
-        return "Runs remote script file with arguments specified on the chosen termite2 server.";
+        return "Runs remote script file with arguments specified on the chosen EdgeEmu server.";
     }
 }

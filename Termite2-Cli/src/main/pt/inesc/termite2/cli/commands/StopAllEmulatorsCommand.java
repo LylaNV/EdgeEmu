@@ -46,12 +46,12 @@ public class StopAllEmulatorsCommand extends Command {
             toStop.addAll(networks);
         }
 
-        // For each termite2 server were we are sending installapp cmd, create a thread that handles the install cmd
+        // For each EdgeEmu server were we are sending installapp cmd, create a thread that handles the install cmd
         Hashtable<Thread, StopAllThread> stopAllThreads = new Hashtable<>();
         for(String ip : toStop){
             StopAllThread stopT = new StopAllThread(ip, context.mRemoteAVDController);
             Thread t = new Thread(stopT);
-            System.out.println("Processing stopall cmd to termite2 server \"" + ip + "\" ...");
+            System.out.println("Processing stopall cmd to EdgeEmu server \"" + ip + "\" ...");
             t.start();
             stopAllThreads.put(t, stopT);
         }
@@ -63,7 +63,7 @@ public class StopAllEmulatorsCommand extends Command {
             } catch (InterruptedException ignored) { }
         }
 
-        // Save installapp command results for each termite2 server
+        // Save installapp command results for each EdgeEmu server
         for(StopAllThread stopAllT : stopAllThreads.values()) {
             if(stopAllT.result.equals(OK)){
                 context.mRemoteAVDController.removeEmulatorForNet(stopAllT.tServerIp);
@@ -96,7 +96,7 @@ public class StopAllEmulatorsCommand extends Command {
     }
 
     public String getExplanation(){
-        return "Stops all emulator instances running on all termite2 servers or only the ones specified.";
+        return "Stops all emulator instances running on all EdgeEmu servers or only the ones specified.";
     }
 
 

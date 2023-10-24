@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Termite2UI</title>
+    <title>EdgeEmuUI</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Bootstrap-->
@@ -69,9 +69,9 @@
                     </br>
                     <div class="infodivider"></div>
                         <li><b style="font-size: 20px;">Emulators view</b></li>
-                        From this view you can see what termite server(s) are connected to termite2 client and all available emulators. From this view you can also:
+                        From this view you can see what EdgeEmu server(s) are connected to EdgeEmu client and all available emulators. From this view you can also:
                         <ul>
-                            <li>Click <img src="images/installedbtn.png" height="12%" width="12%" class="infoimg"> button to receive a message with all installed avd's in each connected termite server (termite servers are represented for the displayed network ip).</li>
+                            <li>Click <img src="images/installedbtn.png" height="12%" width="12%" class="infoimg"> button to receive a message with all installed avd's in each connected EdgeEmu server (EdgeEmu servers are represented for the displayed network ip).</li>
                             <li>Click <img src="images/startemubtn.png" height="15%" width="15%" class="infoimg"> button to start the desired number of emulator(s), with the option to auto start an application.</li>    
                             <li>Click <img src="images/stopemubtn.png" height="18%" width="18%" class="infoimg"> button to stop the selected emulator or all.</li>
                             Importante: Any operation here performed can take some time and the UI may appear stuck while it's processesing the request (installed, start or stop of emulators.).
@@ -98,7 +98,7 @@
                                 <li>Click <img src="images/saveoperationsbtn.png" height="15%" width="15%" class="infoimg"> button (inside the view opened by pressing the operation button) to <ins>save all operation done until now to a text file</ins>. Note that operations performed during the automatic node movement event are not save.</li>
                                 <li>Click <img src="images/emulatorsbtn.png" height="15%" width="15%" class="infoimg"> button to open the emulators view.</li>
                                 <li>Click <img src="images/switchbtn.png" height="6%" width="6%" class="infoimg"> button at the top of the nodes/groups table to <ins>cycle over the Nodes and Groups tables</ins>.</li>
-                                <li>Click <img src="images/commitbtn.png" height="15%" width="15%" class="infoimg"> button to <ins><b>propagate all changes done in the network</b></ins> to the binded emulators connected to Termite2 Client.</li>
+                                <li>Click <img src="images/commitbtn.png" height="15%" width="15%" class="infoimg"> button to <ins><b>propagate all changes done in the network</b></ins> to the binded emulators connected to EdgeEmu Client.</li>
                     
                             </ul>
                     </ul>
@@ -276,7 +276,7 @@
                         <input type="file" id="uploadinput" accept=".txt" style="display: none;" onchange="loadNetwork()">
                         <button id="opdonebutton" class="btn btn-default btn-lg" data-toggle="modal" data-target="#commandsDoneModal" onclick="setOperationDoneList()" title="Click to see history of operation done.">Operations Done</button>
                         <button id="emulatorsbutton" class="btn btn-default btn-lg" data-toggle="modal" onclick="openEmulatorsView()" data-target="#emulatorsDataModal" title="Click to see available emulators data.">Emulators</button>
-                        <button id="commitbutton" class="btn btn-default btn-lg" disabled="true" onclick="commit()" title="Click to propagate network changes to Termite Client and all binded emulatores.">Commit</button>
+                        <button id="commitbutton" class="btn btn-default btn-lg" disabled="true" onclick="commit()" title="Click to propagate network changes to EdgeEmu Client and all binded emulatores.">Commit</button>
                     </div>
                 </div> 
             </div>

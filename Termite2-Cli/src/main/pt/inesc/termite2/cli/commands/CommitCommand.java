@@ -182,6 +182,6 @@ public class CommitCommand extends Command {
     }
 
     public String getExplanation(){
-        return "Commits the current termite2 network state to all binded emulators.";
+        return "Commits the current EdgeEmu network state to all binded emulators.";
     }
 }

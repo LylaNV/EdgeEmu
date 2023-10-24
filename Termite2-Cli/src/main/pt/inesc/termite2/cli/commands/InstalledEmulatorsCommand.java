@@ -54,6 +54,6 @@ public class InstalledEmulatorsCommand extends Command {
 
     @Override
     public String getExplanation() {
-        return "Returns the installed avds at the chosen termite2 server(s).";
+        return "Returns the installed avds at the chosen EdgeEmu server(s).";
     }
 }

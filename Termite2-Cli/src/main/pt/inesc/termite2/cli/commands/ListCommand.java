@@ -201,6 +201,6 @@ public class ListCommand extends Command {
     }
 
     public String getExplanation(){
-        return "Lists relevant termite2 data.";
+        return "Lists relevant EdgeEmu data.";
     }
 }

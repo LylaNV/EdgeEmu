@@ -26,13 +26,13 @@ public class InstallApplicationCommand extends Command {
             return returnError(verificationResult);
         }
 
-        // For each termite2 server were we are sending installapp cmd, create a thread that handles the install cmd
+        // For each EdgeEmu server were we are sending installapp cmd, create a thread that handles the install cmd
         Hashtable<Thread, InstallAppThread> InstallThreads = new Hashtable<>();
         for(ArrayList<String> tcmd: fullCommand){
             System.out.println(installationTargets.get(tcmd.get(0)).toString());
             InstallAppThread installT = new InstallAppThread(tcmd.get(0), tcmd.get(1), installationTargets.get(tcmd.get(0)), context.mRemoteAVDController);
             Thread t = new Thread(installT);
-            System.out.println("Processing installapp cmd to termite2 server \"" +tcmd.get(0) + "\" ...");
+            System.out.println("Processing installapp cmd to EdgeEmu server \"" +tcmd.get(0) + "\" ...");
             t.start();
             InstallThreads.put(t, installT);
         }
@@ -44,9 +44,9 @@ public class InstallApplicationCommand extends Command {
             } catch (InterruptedException ignored) { }
         }
 
-        // Save installapp command results for each termite2 server
+        // Save installapp command results for each EdgeEmu server
         for(InstallAppThread installAppT : InstallThreads.values()) {
-            System.out.println("Installation result for termite2 server \"" + installAppT.tServerIp + "\":");
+            System.out.println("Installation result for EdgeEmu server \"" + installAppT.tServerIp + "\":");
             System.out.println(installAppT.result);
         }
 
@@ -91,7 +91,7 @@ public class InstallApplicationCommand extends Command {
 
     @Override
     public String getExplanation() {
-        return "Install/reinstall an apk corresponding to the name provided on all or selected ONLINE emulator(s) on chosen termite2 server. Separate the command with \"|\" to add another installapp command to another termite2 server. ";
+        return "Install/reinstall an apk corresponding to the name provided on all or selected ONLINE emulator(s) on chosen EdgeEmu server. Separate the command with \"|\" to add another installapp command to another EdgeEmu server. ";
     }
 
     private ArrayList<ArrayList<String>> separateCmd(String[] args){
@@ -129,7 +129,7 @@ public class InstallApplicationCommand extends Command {
             // Validate if controller ip is not duplicate
             for(String ip : ipsFound){
                 if(ip.equals(serverIp)){
-                    return "Repeated termite2 server ip: \"" + serverIp + "\".";
+                    return "Repeated EdgeEmu server ip: \"" + serverIp + "\".";
                 }
             }
 

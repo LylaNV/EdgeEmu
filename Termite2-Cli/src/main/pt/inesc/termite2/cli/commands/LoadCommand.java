@@ -67,7 +67,7 @@ public class LoadCommand extends Command {
     }
 
     public String getExplanation(){
-        return "Loads txt file with termite2 commands. Type stop to interrupt load command.";
+        return "Loads txt file with EdgeEmu commands. Type stop to interrupt load command.";
     }
 
     private static class ReadFileThread implements Runnable {

@@ -70,6 +70,6 @@ public class CreateGroupCommand extends Command {
     }
 
     public String getExplanation(){
-        return "Creates a Termite2 P2P group between chosen devices.";
+        return "Creates a EdgeEmu P2P group between chosen devices.";
     }
 }

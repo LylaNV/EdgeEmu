@@ -116,12 +116,12 @@ public class WebPageUI {
     }
 
     private boolean copyWarFileToTomcat() {
-        File srcFile = new File(mTermite2Path + "/ui/Termite2UI.war");
+        File srcFile = new File(mTermite2Path + "/ui/EdgeEmuUI.war");
         File dest = new File(mTomcatPath + "/webapps");
-        File destWar = new File (mTomcatPath + "/webapps/Termite2UI.war");
+        File destWar = new File (mTomcatPath + "/webapps/EdgeEmuUI.war");
 
         if(!srcFile.exists() || !dest.exists()){
-            System.out.println("Interface ~/ui/Termite2UI.war file not found.");
+            System.out.println("Interface ~/ui/EdgeEmuUI.war file not found.");
             return false;
         }
         if(!dest.exists()){
@@ -129,14 +129,14 @@ public class WebPageUI {
             return false;
         }
         if(destWar.exists()){
-            System.out.println("Termite2UI.war already exists.");
+            System.out.println("EdgeEmuUI.war already exists.");
             return true;
         }
         else{
-            System.out.println("Termite2UI.war does not exists. Copying it...");
+            System.out.println("EdgeEmuUI.war does not exists. Copying it...");
             try {
                 FileUtils.copyFileToDirectory(srcFile, dest, true);
-                System.out.println("Termite2UI.war copied to: " + mTomcatPath + "/webapps");
+                System.out.println("EdgeEmuUI.war copied to: " + mTomcatPath + "/webapps");
                 return true;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -146,10 +146,10 @@ public class WebPageUI {
     }
 
     private boolean copyUifolderToTomcat(){
-        String srcFilePath = mTermite2Path + File.separator + "ui" + File.separator + "Termite2UI";
+        String srcFilePath = mTermite2Path + File.separator + "ui" + File.separator + "EdgeEmuUI";
         File srcFile = new File(srcFilePath);
 
-        String destFilePath = mTomcatPath + File.separator + "webapps" + File.separator + "Termite2UI";
+        String destFilePath = mTomcatPath + File.separator + "webapps" + File.separator + "EdgeEmuUI";
         File destFile = new File(destFilePath);
 
         try {
@@ -159,7 +159,7 @@ public class WebPageUI {
             return false;
         }
 
-        System.out.println("Termite2UI folder copied to tomcat webapps folder.");
+        System.out.println("EdgeEmuUI folder copied to tomcat webapps folder.");
         return true;
     }
 
@@ -188,7 +188,7 @@ public class WebPageUI {
                         DataInputStream in = new DataInputStream(new BufferedInputStream(webClient.getInputStream()));
                         String msgReceived = in.readUTF();
                         String cleanedMsg = msgReceived.replaceAll("\"", "");
-                        System.out.println("Message received from Termite2 GUI:" + msgReceived);
+                        System.out.println("Message received from EdgeEmu GUI:" + msgReceived);
 
                         if (cleanedMsg.equals("startup")) {
                             // refresh emulators
@@ -206,7 +206,7 @@ public class WebPageUI {
                                     DataOutputStream msgOut = new DataOutputStream(webClient.getOutputStream());
                                     //sending message
                                     msgOut.writeUTF(result);
-                                    System.out.println("Result sent to Termite2 GUI: " + result);
+                                    System.out.println("Result sent to EdgeEmu GUI: " + result);
                                     msgOut.close();
                                 } catch (IOException e) {
                                     e.printStackTrace();
@@ -215,7 +215,7 @@ public class WebPageUI {
                         }
 
                     } catch (IOException e) {
-                        System.out.println("Problem occurred receiving message from Termite2 GUI.");
+                        System.out.println("Problem occurred receiving message from EdgeEmu GUI.");
                         //e.printStackTrace(System.out);
                     }
                 }

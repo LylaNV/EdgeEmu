@@ -44,14 +44,14 @@ public class ConfigManager {
 
     public void loadConfigurations() throws ConfigErrorException {
 
-        termitePath = System.getenv("TERMITE2_CLI_PATH");
+        termitePath = System.getenv("EDGEEMU_CLI_PATH");
         if (termitePath == null) {
-            throw new ConfigErrorException("Error: environment variable TERMITE2_CLI_PATH undefined.");
+            throw new ConfigErrorException("Error: environment variable EDGEEMU_CLI_PATH undefined.");
         }
 
         tomcatPath = System.getenv("TOMCAT_PATH");
         if (tomcatPath == null) {
-            System.out.println("Warning: environment variable TOMCAT_PATH undefined. Termite2 GUI will not be available.");
+            System.out.println("Warning: environment variable TOMCAT_PATH undefined. EdgeEmu GUI will not be available.");
             tomcatPath = "undefined";
         }
 
@@ -68,7 +68,7 @@ public class ConfigManager {
         else if(os.contains("linux"))
             termitePlatform = PLATFORM_LINUX;
         else {
-            throw new ConfigErrorException("Error: Invalid platform found, Termite2 is only supported on Windows, Linux or MacOS.");
+            throw new ConfigErrorException("Error: Invalid platform found, EdgeEmu is only supported on Windows, Linux or MacOS.");
         }
     }
 
@@ -99,20 +99,20 @@ public class ConfigManager {
                     }
                 }
                 else{
-                    System.out.println("Warning: Invalid Termite2 Server address format found: " + line + ". Value not registered.");
+                    System.out.println("Warning: Invalid EdgeEmu Server address format found: " + line + ". Value not registered.");
                 }
             }
             reader.close();
         }catch (IOException ex){
-            throw new ConfigErrorException("Error: Unable to read network.txt file to load Termite2 Server(s) network(s) to be used.");
+            throw new ConfigErrorException("Error: Unable to read network.txt file to load EdgeEmu Server(s) network(s) to be used.");
         }
 
         if(mControllerNetworks.size() == 0 ){
-            System.out.println("Error: No valid Termite2 Server address(es) found inside networks.txt file.");
-            throw new ConfigErrorException("Error: Unable to configure Termite2 Server(s) to be used.");
+            System.out.println("Error: No valid EdgeEmu Server address(es) found inside networks.txt file.");
+            throw new ConfigErrorException("Error: Unable to configure EdgeEmu Server(s) to be used.");
         }
 
-        System.out.println("Termite2 server networks loaded: " + mControllerNetworks.toString());
+        System.out.println("EdgeEmu server networks loaded: " + mControllerNetworks.toString());
     }
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      * * * * * * * * * * * * * * * * * * * *   Helper methods  * * * * * * * * * * * * * * * * * * * * * * * * * *

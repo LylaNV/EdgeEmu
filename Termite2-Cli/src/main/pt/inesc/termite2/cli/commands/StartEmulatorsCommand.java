@@ -39,7 +39,7 @@ public class StartEmulatorsCommand extends Command {
             }
             StartEmulatorsThread StartEmulatorT = new StartEmulatorsThread(tcmd.get(0), tcmd.get(1), apppackage, context.mRemoteAVDController);
             Thread t = new Thread(StartEmulatorT);
-            System.out.println("Processing startemus cmd to termite2 server \"" +tcmd.get(0) + "\" ...");
+            System.out.println("Processing startemus cmd to EdgeEmu server \"" +tcmd.get(0) + "\" ...");
             t.start();
             StartEmulatorThreads.put(t, StartEmulatorT);
         }
@@ -51,7 +51,7 @@ public class StartEmulatorsCommand extends Command {
             } catch (InterruptedException ignored) { }
         }
 
-        // Save startemus command result for each termite2 server
+        // Save startemus command result for each EdgeEmu server
         ArrayList<String> startResults = new ArrayList<>();
         for(StartEmulatorsThread StartEmulatorT : StartEmulatorThreads.values()) {
             startResults.add(StartEmulatorT.result);
@@ -90,7 +90,7 @@ public class StartEmulatorsCommand extends Command {
     }
 
     public String getExplanation(){
-        return "Tries to starts all|(1-16) emulator(s) instance on a chosen termite2 server(s) running (optional) chosen application. Separate the command with \"|\" to add another startemus command for another termite2 server.";
+        return "Tries to starts all|(1-16) emulator(s) instance on a chosen EdgeEmu server(s) running (optional) chosen application. Separate the command with \"|\" to add another startemus command for another EdgeEmu server.";
     }
 
     private ArrayList<ArrayList<String>> separateCmd(String[] args){
@@ -149,7 +149,7 @@ public class StartEmulatorsCommand extends Command {
             // Validate if controller ip is not duplicate
             for(String ip : ipsFound){
                 if(ip.equals(serverIp)){
-                    return "Repeated termite2 server ip: \"" + serverIp + "\".";
+                    return "Repeated EdgeEmu server ip: \"" + serverIp + "\".";
                 }
             }
             ipsFound.add(serverIp);

@@ -121,10 +121,10 @@ public class OpenStreetMapUi {
 
     //DONE
     private boolean copyStreetMapUifolderToTomcat(){
-        String srcFilePath = mTermite2Path + File.separator + "ui" + File.separator + "Termite2UI_OpenStreetMap";
+        String srcFilePath = mTermite2Path + File.separator + "ui" + File.separator + "EdgeEmuUI_OpenStreetMap";
         File srcFile = new File(srcFilePath);
 
-        String destFilePath = mTomcatPath + File.separator + "webapps" + File.separator + "Termite2UI_OpenStreetMap";
+        String destFilePath = mTomcatPath + File.separator + "webapps" + File.separator + "EdgeEmuUI_OpenStreetMap";
         File destFile = new File(destFilePath);
 
         try {
@@ -134,7 +134,7 @@ public class OpenStreetMapUi {
             return false;
         }
 
-        System.out.println("Termite2UI_OpenStreetMap folder copied to tomcat webapps folder.");
+        System.out.println("EdgeEmuUI_OpenStreetMap folder copied to tomcat webapps folder.");
         return true;
     }
 
@@ -161,7 +161,7 @@ public class OpenStreetMapUi {
                         DataInputStream in = new DataInputStream(new BufferedInputStream(webClient.getInputStream()));
                         String msgReceived = in.readUTF();
                         String cleanedMsg = msgReceived.replaceAll("\"", "");
-                        System.out.println("Message received from Termite2 GUI:" + msgReceived);
+                        System.out.println("Message received from EdgeEmu GUI:" + msgReceived);
 
                         if (cleanedMsg.equals("startup")) {
                             // refresh emulators
@@ -179,7 +179,7 @@ public class OpenStreetMapUi {
                                     DataOutputStream msgOut = new DataOutputStream(webClient.getOutputStream());
                                     //sending message
                                     msgOut.writeUTF(result);
-                                    System.out.println("Result sent to Termite2 GUI: " + result);
+                                    System.out.println("Result sent to EdgeEmu GUI: " + result);
                                     msgOut.close();
                                 } catch (IOException e) {
                                     e.printStackTrace();
@@ -188,7 +188,7 @@ public class OpenStreetMapUi {
                         }
 
                     } catch (IOException e) {
-                        System.out.println("Problem occurred receiving message from Termite2 GUI.");
+                        System.out.println("Problem occurred receiving message from EdgeEmu GUI.");
                         //e.printStackTrace(System.out);
                     }
                 }

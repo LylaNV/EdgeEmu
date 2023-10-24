@@ -60,6 +60,6 @@ public class CreateAvdsCommand extends Command {
 
     @Override
     public String getExplanation() {
-        return "Create avd(s) on selected termite2 server with choosen name and api.";
+        return "Create avd(s) on selected EdgeEmu server with choosen name and api.";
     }
 }

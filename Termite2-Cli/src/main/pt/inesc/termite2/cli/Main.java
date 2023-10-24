@@ -233,7 +233,7 @@ public class Main {
 
     private static void askMode(){
         System.out.println("");
-        System.out.println("  \u001B[1mTermite2 UI Options:\u001B[0m");
+        System.out.println("  \u001B[1mEdgeEmu UI Options:\u001B[0m");
         System.out.println("  Type '1' to use the default console UI.");
         //System.out.println("  Type '2' to use the Webpage UI.");
         System.out.println("  Type '2' to use the Webpage UI with Google Map.");
@@ -244,10 +244,10 @@ public class Main {
 
     private static void printConsoleUiStart(){
         System.out.println("");
-        System.out.println("  \u001B[1mTermite2 Testbed - Console UI selected\u001B[0m");
+        System.out.println("  \u001B[1mEdgeEmu Testbed - Console UI selected\u001B[0m");
         System.out.println("  Working Directory = " + System.getProperty("user.dir"));
-        System.out.println("  TERMITE2_CLI_PATH = " + termite2Path);
-        System.out.println("  TERMITE2_PLATFORM = " + platform);
+        System.out.println("  EDGEEMU_CLI_PATH = " + termite2Path);
+        System.out.println("  EDGEEMU_PLATFORM = " + platform);
         System.out.println("  Type \"help\" or \"h\" for the full command list");
         System.out.println("");
     }
@@ -256,14 +256,14 @@ public class Main {
         System.out.println("");
         //LYLA
         //System.out.println("  \u001B[1mTermite2 Testbed - Webpage UI selected\u001B[0m");
-        System.out.println("  \u001B[1mTermite2 Testbed - Webpage UI (Goole Map) selected\u001B[0m");
+        System.out.println("  \u001B[1mEdgeEmu Testbed - Webpage UI (Goole Map) selected\u001B[0m");
         System.out.println("  Working Directory = " + System.getProperty("user.dir"));
         System.out.println("  TOMCAT_PATH = " + tomcatPath);
-        System.out.println("  TERMITE2_CLI_PATH = " + termite2Path);
-        System.out.println("  TERMITE2_PLATFORM = " + platform);
+        System.out.println("  EDGEEMU_CLI_PATH = " + termite2Path);
+        System.out.println("  EDGEEMU_PLATFORM = " + platform);
         //LYLA
         //System.out.println("  Access the ui with Google Chrome at localhost:8080/Termite2UI/index.html");
-        System.out.println("  Access the Google Map ui with Google Chrome at localhost:8080/Termite2UI/index.html");
+        System.out.println("  Access the Google Map ui with Google Chrome at localhost:8080/EdgeEmuUI/index.html");
         System.out.println("  Type \"help\" or \"h\" for the shared command list");
         System.out.println("");
     }
@@ -271,12 +271,12 @@ public class Main {
     //LYLA
     private static void printOpenStreetMapUiStart(){
         System.out.println("");
-        System.out.println("  \u001B[1mTermite2 Testbed - Webpage UI (OpenStreetMap) selected\u001B[0m");
+        System.out.println("  \u001B[1mEdgeEmu Testbed - Webpage UI (OpenStreetMap) selected\u001B[0m");
         System.out.println("  Working Directory = " + System.getProperty("user.dir"));
         System.out.println("  TOMCAT_PATH = " + tomcatPath);
-        System.out.println("  TERMITE2_CLI_PATH = " + termite2Path);
-        System.out.println("  TERMITE2_PLATFORM = " + platform);
-        System.out.println("  Access the OpenStreetMap ui with Google Chrome at localhost:8080/Termite2UI_OpenStreetMap/index.html");
+        System.out.println("  EDGEEMU_CLI_PATH = " + termite2Path);
+        System.out.println("  EDGEEMU_PLATFORM = " + platform);
+        System.out.println("  Access the OpenStreetMap ui with Google Chrome at localhost:8080/EdgeEmuUI_OpenStreetMap/index.html");
         System.out.println("  Type \"help\" or \"h\" for the shared command list");
         System.out.println("");
     }

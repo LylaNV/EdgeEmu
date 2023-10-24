@@ -40,6 +40,6 @@ public class DestroyAvdsCommand extends Command {
 
     @Override
     public String getExplanation() {
-        return "Destroys all or just the selected avd(s) on the chosen termite2 server.";
+        return "Destroys all or just the selected avd(s) on the chosen EdgeEmu server.";
     }
 }

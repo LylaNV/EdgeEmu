@@ -28,7 +28,7 @@ public class StartApplicationCommand extends Command {
             return returnError(verificationResult);
         }
 
-        // For each termite2 server were we are sending installapp cmd, create a thread that handles the install cmd
+        // For each EdgeEmu server were we are sending installapp cmd, create a thread that handles the install cmd
         Hashtable<Thread, StartAppThread> startAppThreads = new Hashtable<>();
         for(ArrayList<String> tcmd: fullCommand){
             System.out.println(startAppTargets.get(tcmd.get(0)).toString());
@@ -45,9 +45,9 @@ public class StartApplicationCommand extends Command {
             } catch (InterruptedException ignored) { }
         }
 
-        // Save installapp command results for each termite2 server
+        // Save installapp command results for each EdgeEmu server
         for(StartAppThread startAppT : startAppThreads.values()) {
-            System.out.println("Start app result for termite2 server \"" + startAppT.tServerIp + "\":");
+            System.out.println("Start app result for EdgeEmu server \"" + startAppT.tServerIp + "\":");
             System.out.println(startAppT.result);
         }
 
@@ -92,7 +92,7 @@ public class StartApplicationCommand extends Command {
 
     @Override
     public String getExplanation() {
-        return "Starts app package provided on all or just the selected ONLINE emulator(s) on the chosen termite2 server. Separate the command with \"|\" to add another startapp command for another termite2 server.";
+        return "Starts app package provided on all or just the selected ONLINE emulator(s) on the chosen EdgeEmu server. Separate the command with \"|\" to add another startapp command for another EdgeEmu server.";
     }
 
     private ArrayList<ArrayList<String>> separateCmd(String[] args){
@@ -130,7 +130,7 @@ public class StartApplicationCommand extends Command {
             // Validate if controller ip is not duplicate
             for(String ip : ipsFound){
                 if(ip.equals(serverIp)){
-                    return "Repeated termite2 server ip: \"" + serverIp + "\".";
+                    return "Repeated EdgeEmu server ip: \"" + serverIp + "\".";
                 }
             }
 

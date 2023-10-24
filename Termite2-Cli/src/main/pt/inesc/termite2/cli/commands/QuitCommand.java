@@ -24,6 +24,6 @@ public class QuitCommand extends Command {
     }
 
     public String getExplanation(){
-        return "Terminates Termite2-Cli.";
+        return "Terminates EdgeEmu-Cli.";
     }
 }
