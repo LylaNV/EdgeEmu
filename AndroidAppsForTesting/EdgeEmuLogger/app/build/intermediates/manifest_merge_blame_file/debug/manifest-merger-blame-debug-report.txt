@@ -1,0 +1,96 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.edgeemulogger"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:6:5-66
+11-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:6:22-64
+12
+13    <permission
+13-->[androidx.core:core:1.9.0] /Users/lylan/Library/Android/sdk/caches/transforms-3/6572e896cf691f4b13ad10c561cb3105/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+14        android:name="com.example.edgeemulogger.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+14-->[androidx.core:core:1.9.0] /Users/lylan/Library/Android/sdk/caches/transforms-3/6572e896cf691f4b13ad10c561cb3105/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+15        android:protectionLevel="signature" />
+15-->[androidx.core:core:1.9.0] /Users/lylan/Library/Android/sdk/caches/transforms-3/6572e896cf691f4b13ad10c561cb3105/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+16
+17    <uses-permission android:name="com.example.edgeemulogger.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+17-->[androidx.core:core:1.9.0] /Users/lylan/Library/Android/sdk/caches/transforms-3/6572e896cf691f4b13ad10c561cb3105/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+17-->[androidx.core:core:1.9.0] /Users/lylan/Library/Android/sdk/caches/transforms-3/6572e896cf691f4b13ad10c561cb3105/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+18
+19    <application
+19-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:8:5-32:19
+20        android:name="com.example.edgeemulogger.GlobalClass"
+20-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:9:9-36
+21        android:allowBackup="true"
+21-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:10:9-35
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.9.0] /Users/lylan/Library/Android/sdk/caches/transforms-3/6572e896cf691f4b13ad10c561cb3105/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+23        android:dataExtractionRules="@xml/data_extraction_rules"
+23-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:11:9-65
+24        android:debuggable="true"
+25        android:fullBackupContent="@xml/backup_rules"
+25-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:12:9-54
+26        android:icon="@mipmap/ic_launcher"
+26-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:13:9-43
+27        android:label="@string/app_name"
+27-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:14:9-41
+28        android:roundIcon="@mipmap/ic_launcher_round"
+28-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:15:9-54
+29        android:supportsRtl="true"
+29-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:16:9-35
+30        android:theme="@style/Theme.EdgeEmuLogger" >
+30-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:17:9-51
+31        <activity
+31-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:20:9-28:20
+32            android:name="com.example.edgeemulogger.MainActivity"
+32-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:21:13-41
+33            android:exported="true" >
+33-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:22:13-36
+34            <intent-filter>
+34-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:23:13-27:29
+35                <action android:name="android.intent.action.MAIN" />
+35-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:24:17-69
+35-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:24:25-66
+36
+37                <category android:name="android.intent.category.LAUNCHER" />
+37-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:26:17-77
+37-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:26:27-74
+38            </intent-filter>
+39        </activity>
+40
+41        <service android:name="pt.inesc.termite.wifidirect.service.SimWifiP2pService" />
+41-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:30:9-89
+41-->/Users/lylan/AndroidStudioProjects/EdgeEmuLogger/app/src/main/AndroidManifest.xml:30:18-86
+42
+43        <provider
+43-->[androidx.emoji2:emoji2:1.2.0] /Users/lylan/Library/Android/sdk/caches/transforms-3/9f99c19470d8bf18ee15270d078c3173/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+44            android:name="androidx.startup.InitializationProvider"
+44-->[androidx.emoji2:emoji2:1.2.0] /Users/lylan/Library/Android/sdk/caches/transforms-3/9f99c19470d8bf18ee15270d078c3173/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+45            android:authorities="com.example.edgeemulogger.androidx-startup"
+45-->[androidx.emoji2:emoji2:1.2.0] /Users/lylan/Library/Android/sdk/caches/transforms-3/9f99c19470d8bf18ee15270d078c3173/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+46            android:exported="false" >
+46-->[androidx.emoji2:emoji2:1.2.0] /Users/lylan/Library/Android/sdk/caches/transforms-3/9f99c19470d8bf18ee15270d078c3173/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+47            <meta-data
+47-->[androidx.emoji2:emoji2:1.2.0] /Users/lylan/Library/Android/sdk/caches/transforms-3/9f99c19470d8bf18ee15270d078c3173/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+48                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+48-->[androidx.emoji2:emoji2:1.2.0] /Users/lylan/Library/Android/sdk/caches/transforms-3/9f99c19470d8bf18ee15270d078c3173/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+49                android:value="androidx.startup" />
+49-->[androidx.emoji2:emoji2:1.2.0] /Users/lylan/Library/Android/sdk/caches/transforms-3/9f99c19470d8bf18ee15270d078c3173/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+50            <meta-data
+50-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/lylan/Library/Android/sdk/caches/transforms-3/a68586d9ac6fc4872d4884a947d1c1d5/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+51                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+51-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/lylan/Library/Android/sdk/caches/transforms-3/a68586d9ac6fc4872d4884a947d1c1d5/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+52                android:value="androidx.startup" />
+52-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/lylan/Library/Android/sdk/caches/transforms-3/a68586d9ac6fc4872d4884a947d1c1d5/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+53        </provider>
+54    </application>
+55
+56</manifest>
