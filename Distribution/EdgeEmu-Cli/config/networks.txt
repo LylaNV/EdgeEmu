@@ -1,0 +1,5 @@
+#Place the EdgeEmu Server network ip and clientports here (one per line). For example:
+#<EdgeEmuServer netwotk>:<EdgeEmu Server clientport>
+#192.168.1.1:8085
+#193.157.190.155:8085
+192.168.0.103:8085
