@@ -48,7 +48,7 @@ public class AVDControllerDriver {
         return emuPort;
     }
 
-    // This is run on termite2 server start to check if there is emulators already running, and automatically sets the redirection rules
+    // This is run on EdgeEmu server start to check if there is emulators already running, and automatically sets the redirection rules
     protected void start() {
         try {
             setEmulatorInstances();
@@ -117,7 +117,7 @@ public class AVDControllerDriver {
         return assignedEmulators;
     }
 
-    /*This method forms the Emulator objs to Strings to be sent to the Termite2 Client*/
+    /*This method forms the Emulator objs to Strings to be sent to the EdgeEmu Client*/
     public String getEmulatorsString() {
         if (assignedEmulators.size() == 0) {
             return null;
@@ -1014,7 +1014,7 @@ public class AVDControllerDriver {
     public void printStructures() {
         System.out.println("Network ip = " + networkIp);
         System.out.println("Android sdk path = " + sdkPath);
-        System.out.println("Termite2 server path = " + termiteServerPath);
+        System.out.println("EdgeEmu server path = " + termiteServerPath);
         System.out.println("Platform = " + platform);
         System.out.println("");
         System.out.println("AvailableAddresses:");

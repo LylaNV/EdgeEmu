@@ -140,8 +140,8 @@ public class LocalReceiverThread extends Thread {
                 this.destPort = fullIp[1];
 
                 printMsg(THREAD_ID, TAG,"Starting destination registration sequence for external server IP =  " + destIp + " and emulator on PORT = " + destPort);
-                if (openExternalControllerConnection(destIp)) { // If connection to external termite2 server True
-                    if (registerPortOnExternalController(destPort)) { // If port registering on external termite servef True
+                if (openExternalControllerConnection(destIp)) { // If connection to external EdgeEmu server True
+                    if (registerPortOnExternalController(destPort)) { // If port registering on external EdgeEmu servef True
                         printMsg(THREAD_ID, TAG,"Registration sequence done with success.");
                         return true;
                     }
@@ -152,7 +152,7 @@ public class LocalReceiverThread extends Thread {
                 return false;
 
             } catch (IOException | ClassNotFoundException e) {
-                printMsg(THREAD_ID, TAG,"Error: Not able to read incoming termite2 server connection.");
+                printMsg(THREAD_ID, TAG,"Error: Not able to read incoming EdgeEmu server connection.");
                 e.printStackTrace();
                 return false;
             }
@@ -161,17 +161,17 @@ public class LocalReceiverThread extends Thread {
         private boolean openExternalControllerConnection(String ip) {
             printMsg(THREAD_ID, TAG, "Opening connection to external server destination on ip \"" + ip + "\"...");
             try {
-                //We create the external termite2 server destination connection for all incoming messages on this local receiver thread
+                //We create the external EdgeEmu server destination connection for all incoming messages on this local receiver thread
                 InetAddress destAddress = InetAddress.getByName(destIp);
                 destinationSocket = new Socket(destAddress, target_server_port);
-                printMsg(THREAD_ID, TAG,"Socket connection to remote termite2 server on " + ip + ":8095 created.");
+                printMsg(THREAD_ID, TAG,"Socket connection to remote EdgeEmu server on " + ip + ":8095 created.");
                 destObjectOutput = new ObjectOutputStream(destinationSocket.getOutputStream());
                 destObjectOutput.flush();
                 destObjectInput = new ObjectInputStream(destinationSocket.getInputStream());
 
                 return true;
             } catch (IOException e) {
-                printMsg(THREAD_ID, TAG,"An Error occurred when trying to establish connection to remote termite2 server on " + ip + ":8095");
+                printMsg(THREAD_ID, TAG,"An Error occurred when trying to establish connection to remote EdgeEmu server on " + ip + ":8095");
                 //e.printStackTrace();
                 return false;
             }
@@ -180,15 +180,15 @@ public class LocalReceiverThread extends Thread {
         private boolean registerPortOnExternalController(String port) {
             printMsg(THREAD_ID, TAG," trying to register connection to port \"" + port + "\" on external emulator...");
             try {
-                // we send port destination message to termite2 server target
+                // we send port destination message to EdgeEmu server target
                 destObjectOutput.writeObject(destPort);
                 destObjectOutput.flush();
 
-                // We wait for ok response from termite2 server target
+                // We wait for ok response from EdgeEmu server target
                 printMsg(THREAD_ID, TAG,"Waiting for response...");
                 Object destResponse = destObjectInput.readObject();
                 if (!destResponse.equals(OK)) {
-                    printMsg(THREAD_ID, TAG,"Error: Invalid registration result for destination port " + port + " on remote termite2 server.");
+                    printMsg(THREAD_ID, TAG,"Error: Invalid registration result for destination port " + port + " on remote EdgeEmu server.");
                     return false;
                 }
 
@@ -197,7 +197,7 @@ public class LocalReceiverThread extends Thread {
                 return true;
 
             } catch (IOException | ClassNotFoundException e) {
-                printMsg(THREAD_ID, TAG,"Error: Connection problem occurred when trying to register emu port: " + port + " destination on remote termite2 server.");
+                printMsg(THREAD_ID, TAG,"Error: Connection problem occurred when trying to register emu port: " + port + " destination on remote EdgeEmu server.");
                 return false;
             }
         }
@@ -259,17 +259,17 @@ public class LocalReceiverThread extends Thread {
             public void run() {
                 while (!controllerConnection.isClosed() && !emuConnection.isClosed()) {
                     try {
-                        printMsg(THREAD_ID, TAG,"Waiting for response from external termite2 server....");
+                        printMsg(THREAD_ID, TAG,"Waiting for response from external EdgeEmu server....");
                         Object response = inResponse.readObject();
 
-                        printMsg(THREAD_ID, TAG,"Response received from external termite2 server sending it back to emulator...");
+                        printMsg(THREAD_ID, TAG,"Response received from external EdgeEmu server sending it back to emulator...");
 
                         outResponse.writeObject(response);
                         outResponse.flush();
                         printMsg(THREAD_ID, TAG,"Response sent back to emulator.");
                     } catch (IOException | ClassNotFoundException e) {
                         //e.printStackTrace();
-                        printMsg(THREAD_ID, TAG,"Error: Lost socket connection to external termite2 server.");
+                        printMsg(THREAD_ID, TAG,"Error: Lost socket connection to external EdgeEmu server.");
                     }
                 }
             }
@@ -287,9 +287,9 @@ public class LocalReceiverThread extends Thread {
 
 /* Explanation
 - receive connection from local emulator
-- first message registers destination of termite2 server ip and port of target emulator
-- we open connection to external termite2 server ip and send emulator port
+- first message registers destination of EdgeEmu server ip and port of target emulator
+- we open connection to external EdgeEmu server ip and send emulator port
 - wait for response if of we keep input connection open for subsequent messages
-- and redirenct incoming responses from target termite2 server to emulator requesting message forwarding
+- and redirenct incoming responses from target EdgeEmu server to emulator requesting message forwarding
 - this must be handled on diferent threads
 * */

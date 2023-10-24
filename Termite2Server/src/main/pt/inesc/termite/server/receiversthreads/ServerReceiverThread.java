@@ -35,13 +35,13 @@ public class ServerReceiverThread extends Thread {
             while (!messageReceiverS.isClosed()) {
                 // socket object to receive incoming client requests
                 Socket controllerConnection = messageReceiverS.accept();
-                System.out.println("ServerReceiver: Connection received from external Termite2 Server : " + controllerConnection);
-                System.out.println("ServerReceiver: Assigning new connection thread for this termite2 server.");
+                System.out.println("ServerReceiver: Connection received from external EdgeEmu Server : " + controllerConnection);
+                System.out.println("ServerReceiver: Assigning new connection thread for this EdgeEmu server.");
                 Thread receiverHandler = new ServerReceiverHandler(controllerConnection);
                 receiverHandler.start();
             }
         } catch (IOException e) {
-            System.out.println("ServerReceiver Error: Problem trying to create connection to external termite2 server.");
+            System.out.println("ServerReceiver Error: Problem trying to create connection to external EdgeEmu server.");
             e.printStackTrace();
         }
     }
@@ -74,7 +74,7 @@ public class ServerReceiverThread extends Thread {
                 out.flush();
                 in = new ObjectInputStream(controllerConnection.getInputStream());
             } catch (IOException e) {
-                printMsg(THREAD_ID, TAG,"Error: Not able to create communication streams with external termite2 server.");
+                printMsg(THREAD_ID, TAG,"Error: Not able to create communication streams with external EdgeEmu server.");
                 e.printStackTrace();
             }
         }
@@ -85,10 +85,10 @@ public class ServerReceiverThread extends Thread {
             if (openEmulatorConnection()) {
 
                 while (!controllerConnection.isClosed() && !emuConnection.isClosed()) {
-                    printMsg(THREAD_ID, TAG,"Reading subsequent messages from external termite2 server...");
+                    printMsg(THREAD_ID, TAG,"Reading subsequent messages from external EdgeEmu server...");
                     try {
 
-                        // Read new message content from external termite2 server
+                        // Read new message content from external EdgeEmu server
                         Object object = in.readObject();
                         printMsg(THREAD_ID, TAG,"message received: \"" + object.toString() +"\".");
 
@@ -112,9 +112,9 @@ public class ServerReceiverThread extends Thread {
                 try {
                     out.writeObject(ERROR);
                     out.flush();
-                    printMsg(THREAD_ID, TAG,"ERROR message sent to external termite2 server.");
+                    printMsg(THREAD_ID, TAG,"ERROR message sent to external EdgeEmu server.");
                 } catch (IOException e) {
-                    printMsg(THREAD_ID, TAG,"Error: Not able to send error message to external termite2 server.");
+                    printMsg(THREAD_ID, TAG,"Error: Not able to send error message to external EdgeEmu server.");
                     e.printStackTrace();
                 }
             }
@@ -142,11 +142,11 @@ public class ServerReceiverThread extends Thread {
 
                 out.writeObject(OK);
                 out.flush();
-                printMsg(THREAD_ID, TAG, "OK message sent to external termite2 server.");
+                printMsg(THREAD_ID, TAG, "OK message sent to external EdgeEmu server.");
 
                 emuOut.flush();
                 emuIn = new ObjectInputStream(emuConnection.getInputStream());
-                printMsg(THREAD_ID, TAG, "Connection with between external termite2 server and emulator on port " + portString + " established, opening ReceiverResponseThread channel.");
+                printMsg(THREAD_ID, TAG, "Connection with between external EdgeEmu server and emulator on port " + portString + " established, opening ReceiverResponseThread channel.");
 
                 startResponseChannel(emuConnection, emuIn, out);
                 return true;
@@ -210,7 +210,7 @@ public class ServerReceiverThread extends Thread {
                         printMsg(THREAD_ID, TAG, "Waiting for emulator responses...");
                         Object response = inResponseEmu.readObject();
 
-                        printMsg(THREAD_ID, TAG, "Response received from emulator sending it back to external termite2 server....");
+                        printMsg(THREAD_ID, TAG, "Response received from emulator sending it back to external EdgeEmu server....");
 
                         outResponseController.writeObject(response);
                         outResponseController.flush();
@@ -236,10 +236,10 @@ public class ServerReceiverThread extends Thread {
 
 
 /* Explanation:
- * This component is responsible for receiving connections from external termite2 server that want to redirect message to a local emulator, operation is done has follows:
+ * This component is responsible for receiving connections from external EdgeEmu server that want to redirect message to a local emulator, operation is done has follows:
  * - First open socket connection on ( network_ip : 8095 ).
- * - Them when a external termite2 server connects we create a thread with the socket connection and open communication streams on the constructor.
- * - This thread now will handle this external termite2 server interaction until the end, while the main thread keeps looking for other connections.
+ * - Them when a external EdgeEmu server connects we create a thread with the socket connection and open communication streams on the constructor.
+ * - This thread now will handle this external EdgeEmu server interaction until the end, while the main thread keeps looking for other connections.
  *
  * - When the handler thread start we first wait for the port register message (port of the emulator that the external server is trying to send the message) .
  * - When the port message is received we try to establish connection to the emulator-PORT.

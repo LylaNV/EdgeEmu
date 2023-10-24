@@ -56,35 +56,35 @@ public class ClientReceiverThread extends Thread {
 
         while (!commitServer.isClosed()) {
             try (Socket commitClient = commitServer.accept()) {
-                System.out.println("ClientReceiver: Connection to Termite-Cli established.");
+                System.out.println("ClientReceiver: Connection to EdgeEmu-Cli established.");
 
                 ObjectOutputStream out = new ObjectOutputStream(commitClient.getOutputStream());
                 ObjectInputStream in = new ObjectInputStream(commitClient.getInputStream());
 
-                while (!commitClient.isClosed()) { //interact with termite-cli until connection closes.
+                while (!commitClient.isClosed()) { //interact with EdgeEmu-cli until connection closes.
 
-                    System.out.println("ClientReceiver: Waiting for Termite2-Cli messages...");
+                    System.out.println("ClientReceiver: Waiting for EdgeEmu-Cli messages...");
                     Object object = in.readObject();
                     messageReceived = (ArrayList<String>) object;
                     System.out.println("\nClientReceiver: Message received: " + messageReceived.toString());
 
                     if (messageReceived.size() == 0) {
-                        System.out.println("ClientReceiver: Message received with size 0 on termite2 server.");
-                        response.add("Error: Message received with size 0 on termite2 server " + AVDController.getNetworkIp());
+                        System.out.println("ClientReceiver: Message received with size 0 on EdgeEmu server.");
+                        response.add("Error: Message received with size 0 on EdgeEmu server " + AVDController.getNetworkIp());
                         out.writeObject(response);
                     } else {
                         response = processMessage(messageReceived);
-                        System.out.println("ClientReceiver: Response to termite2-Cli: " + response.toString());
+                        System.out.println("ClientReceiver: Response to EdgeEmu-Cli: " + response.toString());
                         out.writeObject(response);
                     }
                     out.flush();
                 }
 
             } catch (IOException e) {
-                System.out.println("\nAlert: Connection to Termite2-Cli lost.\n");
+                System.out.println("\nAlert: Connection to EdgeEmu-Cli lost.\n");
                 //e.printStackTrace();
             } catch (ClassNotFoundException e) {
-                System.out.println("Error: Unrecognized object received from termite2-Cli. Continue operation.");
+                System.out.println("Error: Unrecognized object received from EdgeEmu-Cli. Continue operation.");
                 //e.printStackTrace();
             }
         }

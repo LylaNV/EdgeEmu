@@ -78,12 +78,12 @@ public class ConfigController {
             throw new ConfigErrorException("Error: environment variable ANDROID_SDK_PATH undefined.");
         }
 
-        termiteServerPath = System.getenv("TERMITE2_SERVER_PATH");
+        termiteServerPath = System.getenv("EDGEEMU_SERVER_PATH");
         // LYLA
-        System.out.println("[ConfigController -> loadConfiguration -> termite server path is: " + termiteServerPath);
+        System.out.println("[ConfigController -> loadConfiguration -> EdgeEmu server path is: " + termiteServerPath);
         //
         if (termiteServerPath == null) {
-            throw new ConfigErrorException("Error: environment variable TERMITE_SERVER_PATH undefined.");
+            throw new ConfigErrorException("Error: environment variable EDGEEMU_SERVER_PATH undefined.");
         }
         setOS();
         setLocalIpAddress();
@@ -99,7 +99,7 @@ public class ConfigController {
             else if(os.contains("linux"))
                 tServerPlatform = PLATFORM_LINUX;
             else {
-                throw new ConfigErrorException("Error: Invalid platform found, Termite2 is only supported on Windows, Linux or MacOS.");
+                throw new ConfigErrorException("Error: Invalid platform found, EdgeEmu is only supported on Windows, Linux or MacOS.");
             }
     }
 

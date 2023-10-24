@@ -71,7 +71,7 @@ public class CommitCommand extends Command {
 
     @Override
     public String getExplanation() {
-        return "Commits the network state received from termite2-cli to the binded emulators on this machine.";
+        return "Commits the network state received from EdgeEmu-cli to the binded emulators on this machine.";
     }
 
     public static class CommitHandler implements Runnable {

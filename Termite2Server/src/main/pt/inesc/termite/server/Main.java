@@ -47,7 +47,7 @@ public class Main {
 
         } catch (ReceiverThreadException e) {
             e.printStackTrace();
-            System.out.println("TermiteServer Stopped.");
+            System.out.println("EdgeEmuServer Stopped.");
             System.exit(0);
         }
 
@@ -78,10 +78,10 @@ public class Main {
 
     private static void printStartMessage() {
         System.out.println("");
-        System.out.println("  \u001B[1mTermite2 Server ONLINE on network " + ConfigController.getLocalNetworkIp() + ":\u001B[0m");
+        System.out.println("  \u001B[1mEdgeEmu Server ONLINE on network " + ConfigController.getLocalNetworkIp() + ":\u001B[0m");
         System.out.println("  Working Directory = " + System.getProperty("user.dir"));
-        System.out.println("  TERMITE2_SERVER_PATH = " + ConfigController.getTermiteServerPath());
-        System.out.println("  TERMITE2_PLATFORM = " + ConfigController.getServerPlatform());
+        System.out.println("  EDGEEMU_SERVER_PATH = " + ConfigController.getTermiteServerPath());
+        System.out.println("  EDGEEMU_PLATFORM = " + ConfigController.getServerPlatform());
         System.out.println("  ANDROID_SDK_PATH = " + ConfigController.getAndroidSDKPath());
         System.out.println("  Type \"help\" or \"h\" for the full command list");
         System.out.println("");

@@ -80,7 +80,7 @@ public class ConsoleUI {
 
     private void printHelp() {
         System.out.println("Type \"print\" to print current data structures");
-        System.out.println("Type \"quit\" to stop TermiteServer");
+        System.out.println("Type \"quit\" to stop EdgeEmuServer");
         System.out.println("");
         System.out.println("Commands and explanation:");
         for (Command cmd : Commands) {
